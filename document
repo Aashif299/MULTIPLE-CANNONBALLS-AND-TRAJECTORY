@@ -1,0 +1,92 @@
+How to create multiple cannon balls ?
+
+We will write a condition tocreate new cannonballs when we press the arrow key.,
+
+One popular data structure to hold multiple values is calledan "array".
+
+An array is created inside square brackets and can store alist of the same or different types of data separated by acomma.
+
+A new value can be pushed inside an array by using array.push().
+
+Similarly, the last values can be popped out of the arrays using array.pop().
+
+We are going to use these concepts of Arrays to create multiple cannonballs instead of creating multiple variables for storing many balls. 
+
+We can create an empty array to store all the cannonballs we will create in the game.
+
+In the sketch.js file we create the balls array.
+
+We will create a new ball when the down arrow key is pressed. 
+
+We will create a keyPressed() function and push the cannonball to an array
+
+Because the cannonBall is stored in an array, we can traverse through each element of an array using a for loop.
+
+To keep our code organized, we create a separate function called showCannonBalls() in Sketch.js.
+
+function showCannonBalls()
+
+function will take two parameters, ball and index.
+
+Using this index we can access each element of the ball array.
+
+Using the for loop over the ball array we’ll get all the cannonballs from the balls array.
+
+It allows us to call showCannonBalls() multiple times.
+
+As we are pushing all our cannonballs in the balls array, so while shooting the cannonballs also we need to access them from the balls array.
+
+In the sketch.js file ball.length is the number of elements in an array; we are using ball.length -1 , as we are accessing the last ball from the array. 
+
+The index of an array starts from 0, and the length of the array will always be 1 more than the last index of the array. So to get the last element we write length -1.
+
+ex: ar[100,200,300]
+
+ar.length = 3
+
+and to access 300 we need to write ar[2] which is as good as ar[ar.length-1] (3-1 = 2)
+
+Now inorder to prevent the cannon balls froom getting stacked on the screen we  destroy them by making them disappear from the screen.
+
+We want it to disappear when the cannonball hits the ground or goes out of the canvas.
+
+To do so, we’ll write an if condition to check if the x position of the ball is greater than width or the y position is greater than height.
+
+If the condition is true then we’ll remove the ball from the world and also from the ball’s array.
+
+To remove the ball from the array we use the splice() function.
+
+The splice() method adds/removes items to/from an array, and returns the removed item(s).
+
+To make the trajectory line that the ball follows :
+
+To draw the trajectory line first we’ll need all the positions that the ball has traveled to. 
+
+Then we can draw the lines/image to create the trajectory line.
+
+We want to start to collecting the positions when we shoot the cannonball.
+
+We need to add the condition to check if the velocity of ball is greater than 0 and the position is greater than 300 .
+
+Here 300 is  the position when ball touches the water found using console.log(this.body.position).
+
+Now inside the code to capture the positions we’ll create a new array called as position and put the positions(the x and y positions of the cannonball) inside it.
+
+Our position array just has the single position of the cannonball, similarly, we need to store all the positions traveled by the cannonball.
+
+So we’ll create a trajectory array and push all the positions inside this trajectory array.
+
+We add the positions to the trajectory array.
+
+Now we have all the positions traveled by the cannonball.
+
+All we need to do is to draw the image on the positions stored in the trajectory array.
+
+We can just use a for loop to get all the values inside the trajectory array and draw an image on it.
+
+
+in cannonBall.js file for setting image to the trajectory:
+    for (var i = 0; i < this.trajectory.length; i++) {
+      image(this.image, this.trajectory[i][0], this.trajectory[i][1], 5, 5);
+    }
+
